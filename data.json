@@ -1,0 +1,14 @@
+{
+    "recipes": [
+        {
+            "id": 1,
+            "name": "recette 1",
+            "toppings":["tomatoes","ham","mushrooms"]
+        },
+        {
+            "id": 2,
+            "name": "recette 2",
+             "toppings":["tomatoes","chesse","mushrooms"]
+        }
+    ]
+}

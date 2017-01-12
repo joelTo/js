@@ -1,0 +1,21 @@
+<script src="pizzayolo.js"></script>
+<script>
+    const recipesService = new RecipesService();
+    
+    recipesService.getRecipesNames()
+        .then(names => {
+            console.log('names', names);
+        })
+
+
+    recipesService.getRecipe('recette 1')
+        .then(r => {
+            console.log('ma rectte', r);
+        })
+
+    recipesService.queryRecipes('quattro')
+        .then(recipes => {
+            console.log('recipes with "quattro"', recipes);
+        });
+
+</script>
