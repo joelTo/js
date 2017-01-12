@@ -55,4 +55,24 @@ class RecipesService {
     handleError(err) {
         alert('Une erreur est survenue')
     }
+
+
+class Pizzeria {
+
+    constructor(recipesService) {
+        this.pool = [];
+        this.recipesService = recipesService;
+    }
+
+    start() {
+        // every n seconds add a new recipe name to the pool
+    }
+
+
+
+
 }
+
+
+
+
