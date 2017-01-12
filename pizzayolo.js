@@ -57,16 +57,29 @@ class RecipesService {
     }
 
 
-class Pizzeria {
+class PizzeriaService {
 
     constructor(recipesService) {
         this.pool = [];
         this.recipesService = recipesService;
     }
 
-    start() {
-        // every n seconds add a new recipe name to the pool
-    }
+    start (time) {
+        // every time seconds add a new recipe name to the pool
+        this.recipesService.getRecipesNames()
+        .then(recipesNames => {
+            setInterval(() => {
+                // Permet d'avoir un nombre aléatoire entre 0 - 5.
+                const index = Math.floor(Math.random() * recipesNames.length);
+                const recipeName = recipesNames[index];
+                this.pool.push(recipeName);
+                console.log(
+                    'POOL : ', 
+                    this.pool
+                )
+            }, time);
+
+
 
 
 
