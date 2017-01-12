@@ -1,3 +1,4 @@
+
 class RecipesService {
     constructor(){
         this.recipes = null;
@@ -12,13 +13,26 @@ class RecipesService {
         .then(recipes => this.recipes = recipes);
     }
 
-    isRecipeCompliant(recipe, pizza){
-       if(pizza.length!==recipe.length){
-           return false;
-       }
-           return pizza.reduce((boolValue, topping) => boolValue && recipe.indexOf(topping) !== -1 && pizza.indexOf(topping)===pizza.lastIndexOf(topping), true);
-   }
-    
+    isRecipeCompliant(recipe, pizza) {
+        if (recipe.toppings.length !== pizza.toppings.length) return false;
+
+        return pizza.toppings.reduce((acc, topping) =>
+            acc 
+            && recipe.toppings.indexOf(topping) !== -1 
+            && pizza.toppings.indexOf(topping) === pizza.toppings.lastIndexOf(topping)
+            , true);
+    }
+
+    getPizzaRecipeName (pizza) {
+        return this.getRecipes()
+        .then(recipes => {
+            return recipes.reduce(
+                (acc, recipe) => 
+                acc 
+                || (this.isRecipeCompliant(recipe, pizza) ? recipe.name : false), 
+            false);
+        })
+    }
 
     getRecipe(name) {
         return this.getRecipes()
@@ -41,8 +55,6 @@ class RecipesService {
             )
         );
     }
-
-
 
     handleError(err) {
         alert('Une erreur est survenue')
@@ -75,18 +87,14 @@ class PizzeriaService {
         })
     }
 
- // { id: 1, toppings: ['', ''] }
+    // { id: 1, toppings: ['', ''] }
     sendPizza (pizza) {
         this.recipesService.getRecipes()
         .then(recipes => {
-            if (this.recipesService.isRecipeCompliant(recipe, pizza))
+            // if (this.recipesService.isRecipeCompliant(recipe, ))
         })
         console.log('pizza', pizza);
         // si pizza correspondante est trouvée dans le pool on l'enlève du pool
     }
-
-
-
-    
 
 }
