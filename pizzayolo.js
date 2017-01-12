@@ -1,12 +1,19 @@
 class RecipesService {
-    constructor(){}
+    constructor(){
+       this.recipes =null;
+    }
 
 
 //recup depuis un serveur retroune une promesse de recettes
     // return Promise<[recipe]>
     getRecipes(){
+        if(this.recipes) return  Promise.resolve(this.recipes);
         return fetch('http://localhost:3000/recipes')
             .then(response => response.json())
+            .then(recipes => {
+                this.recipes =recipes;
+               return recipes;
+            })
     }
 
 
