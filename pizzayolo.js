@@ -12,9 +12,13 @@ class RecipesService {
         .then(recipes => this.recipes = recipes);
     }
 
-    isRecipeCompliant(recipe, pizza) {
-
-    }
+    isRecipeCompliant(recipe, pizza){
+       if(pizza.length!==recipe.length){
+           return false;
+       }
+           return pizza.reduce((boolValue, topping) => boolValue && recipe.indexOf(topping) !== -1 && pizza.indexOf(topping)===pizza.lastIndexOf(topping), true);
+   }
+    
 
     getRecipe(name) {
         return this.getRecipes()
@@ -37,6 +41,8 @@ class RecipesService {
             )
         );
     }
+
+
 
     handleError(err) {
         alert('Une erreur est survenue')
@@ -69,9 +75,18 @@ class PizzeriaService {
         })
     }
 
-    // { id: 1, toppings: ['', ''] }
+ // { id: 1, toppings: ['', ''] }
     sendPizza (pizza) {
+        this.recipesService.getRecipes()
+        .then(recipes => {
+            if (this.recipesService.isRecipeCompliant(recipe, pizza))
+        })
+        console.log('pizza', pizza);
         // si pizza correspondante est trouvée dans le pool on l'enlève du pool
     }
+
+
+
+    
 
 }
