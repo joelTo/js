@@ -25,13 +25,9 @@ export class PizzeriaService {
     }
 
     // { id: 1, toppings: ['', ''] }
-    sendPizza (pizza) {
-        this.recipesService.getRecipes()
-        .then(recipes => {
-            // if (this.recipesService.isRecipeCompliant(recipe, ))
-        })
-        console.log('pizza', pizza);
-        // si pizza correspondante est trouvée dans le pool on l'enlève du pool
+    sendPizza (pizzaName) {
+        const idx = this.pool.indexOf(pizzaName);
+        if (idx !== -1) this.pool.splice(idx, 1);
     }
 
 }

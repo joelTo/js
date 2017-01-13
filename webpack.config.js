@@ -1,11 +1,11 @@
  module.exports = {
-     entry: './src/app.js', // en entrer le seul fichier qui t'intesse --> le fichier main de notre application
+     entry: './src/app.js',
      output: {
-         path: './public',// mettre dans {}
-         filename: 'app.bundle.js' // appelle le {}
-     },
+        path: './public',
+        filename: 'app.bundle.js'
+    },
 
-     module: {
+    module: {
         loaders: [
             {
                 test: /\.js$/,
@@ -14,6 +14,7 @@
             }
         ]
     },
+
     devtool: 'source-map'
 
  };

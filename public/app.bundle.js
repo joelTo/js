@@ -53,6 +53,8 @@
 	var recipesService = new _recipes.RecipesService();
 	var pizzeriaService = new _pizzeria.PizzeriaService(recipesService);
 	
+	console.log('YEAH !!!');
+	
 	pizzeriaService.start(1000);
 
 /***/ },
@@ -196,12 +198,9 @@
 	
 	    }, {
 	        key: 'sendPizza',
-	        value: function sendPizza(pizza) {
-	            this.recipesService.getRecipes().then(function (recipes) {
-	                // if (this.recipesService.isRecipeCompliant(recipe, ))
-	            });
-	            console.log('pizza', pizza);
-	            // si pizza correspondante est trouvée dans le pool on l'enlève du pool
+	        value: function sendPizza(pizzaName) {
+	            var idx = this.pool.indexOf(pizzaName);
+	            if (idx !== -1) this.pool.splice(idx, 1);
 	        }
 	    }]);
 
