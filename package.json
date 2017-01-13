@@ -5,8 +5,7 @@
   "main": "pizzayolo.js",
   "scripts": {
     "api": "json-server data.json",
-    "webpack": "webpack-dev-server --content-base public --hot --inline",
-    "start": "concurrently \"webpack\" \"api\" ",
+    "start": "webpack-dev-server --content-base public --hot --inline",
     "copycast": "copycast",
     "build": "webpack -p",
     "test": "karma start"

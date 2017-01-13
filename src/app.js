@@ -4,4 +4,10 @@ import { PizzeriaService } from './services/pizzeria.service';
 const recipesService = new RecipesService();
 const pizzeriaService = new PizzeriaService(recipesService);
 
-pizzeriaService.start(1000);
+recipesService.getRecipesNames()
+.then(recipes => {
+    $('#recipes').html(recipes.map(recipe => `<li>${ recipe }</li>`).join(''));
+})
+
+//pizzeriaService.start(1000);
+
