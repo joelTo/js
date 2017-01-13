@@ -9,7 +9,12 @@ recipesService.getRecipesNames()
 .then(recipes => {
     $('#recipes')
         .html(recipes.map(recipe => `<li>${ recipe }</li>`).join(''));
+    
+    $('#recipes')
+        .html(recipes.map(recipe => `<li>${ recipe }</li>`).join(''));
 })
+
+
 
 
 // pizzeriaService.start(1000);

@@ -5,7 +5,8 @@
   "main": "pizzayolo.js",
   "scripts": {
     "api": "json-server data.json",
-    "start": "webpack-dev-server --content-base public --hot --inline ",
+    "webpack": "webpack-dev-server --content-base public --hot --inline",
+    "start": "concurrently \"npm run webpack\" \"npm run api\" ",
     "copycast": "copycast",
     "build": "webpack -p",
     "test": "karma start"
@@ -26,5 +27,8 @@
     "karma-webpack": "^2.0.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }

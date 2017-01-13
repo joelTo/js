@@ -9,18 +9,21 @@ export class PizzeriaService {
         // every time seconds add a new recipe name to the pool
         this.recipesService.getRecipesNames()
         .then(recipesNames => {
-            const intervalId = setInterval(() => {
+            this.intervalId = setInterval(() => {
                 const index = Math.floor(Math.random() * recipesNames.length);
                 const recipeName = recipesNames[index];
                 this.pool.push(recipeName);
-                console.log('POOL : ', this.pool);
+
+                const pooldiv = $('#pool');
+
+                pooldiv.html(this.pool.join('<br>'));
 
                 if (this.pool.length >= 10) {
-                    console.log('GAME OVER');
-                    clearInterval(intervalId);
+                    pooldiv.html('GAME OVER');
+                    clearInterval(this.intervalId);
                 }
             }, time);
-
+console.log(this.intervalId)
         })
     }
 
