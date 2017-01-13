@@ -3,5 +3,16 @@
      output: {
          path: './public',// mettre dans {}
          filename: 'app.bundle.js' // appelle le {}
-     }
+     },
+
+     module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            }
+        ]
+    }
+
  };
