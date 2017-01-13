@@ -13,6 +13,7 @@
                 loader: 'babel-loader'
             }
         ]
-    }
+    },
+    devtool: 'source-map'
 
  };
