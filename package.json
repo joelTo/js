@@ -7,7 +7,7 @@
     "api": "json-server data.json",
     "start": "webpack-dev-server --content-base public --hot --inline",
     "copycast": "copycast",
-    "webpack": "webpack"
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
