@@ -4,19 +4,33 @@ import { PizzeriaService } from './services/pizzeria.service';
 const recipesService = new RecipesService();
 const pizzeriaService = new PizzeriaService(recipesService);
 
+window.toto = function (x) {
+     console.log(x);
+ }
+
 // liste des recettes
-recipesService.getRecipesNames()
+recipesService.getRecipes()
 .then(recipes => {
-    $('#recipes')
-        .html(recipes.map(recipe => `<li>${ recipe }</li>`).join(''));
     
     $('#recipes')
-        .html(recipes.map(recipe => `<li>${ recipe }</li>`).join(''));
-})
+        .html(recipes.map(recipe => `
+        <li><button onClick="toto('${recipe.name}')">
+            ${recipe.name.toUpperCase()}
+        </button></li>`));
+
+   
+
+});
+
+//pizzeriaService.start(1000);
+
+//  recipesService.getToppings()
+//      .then(toppings => {
+//         $('#toppings')
+//              .html(recipes.map(recipe => ` <li data-recipe="${ recipe }"> ${ recipe.toUpperCase() } </li>
+//              `).join(''));
+//     })
 
 
-
-
-// pizzeriaService.start(1000);
 
 
